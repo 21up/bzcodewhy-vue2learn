@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hi</title>
+</head>
+
+<body>
+    <div id="app">{{message}}</div>
+    <script src="../js//vue.js"></script>
+    <script>
+        //编程范式：声明式编程
+        //优点：1.数据和界面分离
+        const app = new Vue({
+            el: '#app',
+            data:{
+                message: '你好'
+            }
+        })
+        //原始js的做法（编程范式：命令式编程）
+        //1.创建div元素，设置id属性
+        //2.定义一个div元素
+        //3.将message变量放在前面的div元素中
+        //4.如果修改message内容为：天气不错
+        //5.将修改后的message再次替换到div元素
+    </script>
+</body>
+
+</html>
