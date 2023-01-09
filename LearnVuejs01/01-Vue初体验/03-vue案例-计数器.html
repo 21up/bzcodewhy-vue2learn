@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>当前计数：{{cnt}}</h2>
+        <!-- //1.简单功能
+        <button v-on:click="cnt++">+</button>
+        <button v-on:click="cnt--">-</button> -->
+        <!-- 2.复杂功能定义函数 -->
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub--">-</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app=new Vue({
+            el:'#app',
+            data:{
+                cnt:0
+            },
+            methods:{
+                add:function(){
+                    //this表示new Vue这个对象，而不是data.cnt,这其中做了代理
+                    this.cnt++
+                },
+                sub:function(){
+                    this.cnt--
+                }
+            }
+        })
+    </script>
+</body>
+</html>
