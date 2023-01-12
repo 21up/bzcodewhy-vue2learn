@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+            <!-- 直接绑定对象 -->
+            <h2  class="title" :class="{active:isActice,line:isActice}">{{message}}</h2>
+            <!-- 通过方法绑定对象 -->
+            <h2  class="title" :class="getClasses()">{{message}}</h2>
+            <button @click="btnClick">按钮</button>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好',
+                    isActice:true,
+                    isLine:true
+                },
+                methods:{
+                    btnClick:function(){
+                        this.isActice=!this.isActice
+                    },
+                    getClasses:function(){
+                        return {active:this.isActice,line:this.isActice}
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
