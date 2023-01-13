@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        /*         //log依然能打印出值
+                {
+                    var name='name'
+                }
+                console.log(name);   */
+        var btns = document.getElementsByTagName('button');
+        /* 1.
+        for(var i=0;i<btns.length;i++){
+            btns[i].addEventListener('click',function(){
+                //会始终打印5
+                //界面加载script,给每个按钮绑定了事件,但是到第五次循环后,i=4,退出循环，i++后i=5.
+                //因为i没有作用域，所以i都等于5
+                //addEventListener仅仅是函数声明，实际调用是点击按钮时
+                console.log(i);
+            })
+        } */
+        //2.这里不能理解的是声明时虽然绑定了各自的num，但是实际调用时已经为每个事件存储好了num吗？应该是存储了
+        for(var i=0;i<btns.length;i++){
+            //函数是有作用域的，所以立马执行(i)后，每个addEventListener绑定的num都是属于自己的
+            (function(num){
+                btns[i].addEventListener('click',function(){
+                //功能正常
+                console.log(num);
+            })
+            })(i)//表示立马执行匿名函数，(i)的位置可以放在声明处下方任何一个位置，表示声明后立马执行该函数
+        }
+        /* //3.let有自己的作用域，这里也是，每个事件都存储好了i吗？应该是存储了
+        for (let i = 0; i < btns.length; i++) {
+            //函数是有作用域的
+            btns[i].addEventListener('click', function () {
+                //功能正常
+                console.log(i);
+            })
+        } */
+    </script>
+</body>
+
+</html>
