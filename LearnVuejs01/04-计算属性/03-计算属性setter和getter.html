@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+        <h2>{{fullName}}</h2>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好',
+                    firstName: 'xxx',
+                secondName: 'yyy'
+                },
+                computed:{
+                    /* //简写
+                    fullName:function(){
+                        return this.firstName + ' ' + this.secondName;
+                    } */
+                    //复杂写法
+                    fullName:{
+                       /*  //一般不设置,防止修改。直接删掉
+                        set:function(newValue){
+                        
+                        }, */
+                        get:function(){
+                            return this.firstName + ' ' + this.secondName;
+
+                        },
+                        set:function(newValue){
+                            const names=newValue.split(' ');
+                            this.firstName=names[0];
+                            this.secondName=names[1];
+                    }
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
