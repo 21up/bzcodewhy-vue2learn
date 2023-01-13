@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 拼接方式 -->
+        <h2>{{firstName +' '+ secondName}}</h2>
+        <!-- 方法方式 -->
+        <h2>{{getFullName()}}</h2>
+        <!-- 计算属性 -->
+        <h2>{{fullName}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                firstName: 'xxx',
+                secondName: 'yyy'
+            },
+            methods: {
+                getFullName: function () {
+                    return this.firstName + ' ' + this.secondName;
+                }
+            },
+            //其实也是方法,命名和使用上按照属性来
+            computed:{
+                fullName:function(){
+                    return this.firstName + ' ' + this.secondName;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
