@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- {key(css属性名):'value'(属性值)}，
+            这里的css属性名除了可以使用传统的，
+            还可以使用驼峰用法,比如font-size和fontSize,注意如果是传统写法，要加单引号，如'font-size'-->
+            <!-- <h2 :style="{'font-size':'70px'}">{{message}}</h2> -->
+            <!-- value加引号，当成字符串 -->
+            <h2 :style="{fontSize:'50px'}">{{message}}</h2>
+            <!-- value是变量 -->
+            <h2 :style="{fontSize:finalSize+'px',color:finalColor}">{{message}}</h2>
+            <!-- 可以通过方法获取对象 -->
+            <h2 :style="getStyle()">{{message}}</h2>
+
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好',
+                    finalSize:100,
+                    finalColor:'yellow'
+                },
+                methods:{
+                    getStyle:function(){
+                        return {fontSize:this.finalSize+'px',color:this.finalColor}
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

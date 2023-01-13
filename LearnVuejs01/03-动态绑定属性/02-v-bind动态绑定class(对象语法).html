@@ -13,7 +13,8 @@
 </head>
 <body>
     <div id="app">
-            <!-- 直接绑定对象 -->
+            <!-- 直接绑定对象 {类名:布尔值,类名:布尔值}-->
+            
             <h2  class="title" :class="{active:isActice,line:isActice}">{{message}}</h2>
             <!-- 通过方法绑定对象 -->
             <h2  class="title" :class="getClasses()">{{message}}</h2>

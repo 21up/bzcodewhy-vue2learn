@@ -13,6 +13,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- 作业,点击哪个，哪个展示红色 -->
             <ul>
                 <li v-for="(m,index) in movies" @click="changeColor(index)" :class="{active:m.active}">{{m.name}}</li>
             </ul>
