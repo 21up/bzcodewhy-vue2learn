@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+           <div @click="divClick">
+                <!-- 会存在事件冒泡问题，点击按钮的同时也点击了div，会触发两个事件 -->
+                <!-- <button @click="btnClick">按钮</button> -->
+                <!-- 1 .stop 阻止冒泡 -->
+                <button @click.stop="btnClick">按钮</button>
+                <!-- 2 .prevent 阻止默认事件 -->
+                <form action="baidu">
+                    <!-- 默认提交 -->
+                    <!-- <input type="submit" value="提交"> -->
+                    <input type="submit" @click.prevent="submitClick"/>
+                </form>
+                <!-- 3 .prevent 监听键盘某个键帽  @keyup.enter 则是监听输入回车-->
+                <input type="text" @keyup="keyUp"/>
+                <!-- 4 .once  只触发一次回调，很少用-->
+                <button @click.once="btnClickOnce">按钮1</button>
+
+            </div>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好'
+                },
+                methods:{
+                    divClick(){
+                        console.log('divClick');
+                    },
+                    btnClick(){
+                        console.log('btnClick');
+                    },
+                    submitClick(){
+                        console.log('submitClick');
+                    },
+                    keyUp(){
+                        console.log("keyUp");
+                    },
+                    btnClickOnce(){
+                        console.log("btnClickOnce");
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
