@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <!-- 声明与调用都没有参数,但调用时使用括号：正常打印 -->
+            <button @click="btnClick1()">按钮1</button>
+            <!-- 声明与调用都没有参数,调用时不使用括号：正常打印 -->
+            <button @click="btnClick2">按钮2</button>
+            <!-- 声明与调用都有参数,调用时使用括号，且传入参数:正常打印 -->
+            <button @click="btnClick3(123)">按钮3</button>
+            <!-- 声明与调用都有参数,调用时使用括号, 且不传入参数：会打印undefined-->
+            <button @click="btnClick4()">按钮4</button>
+            <!-- 声明与调用都有参数,调用时不使用括号, 且不传入参数：会打印当前event,即没有指定参数时，默认传event过去-->
+            <button @click="btnClick5">按钮5</button>
+            <!-- 当既需要普通参数，又需要event，不传参数时 -->
+            <button @click="btnClick6">btnClick6</button>
+            <!-- 当既需要普通参数，又需要event,这里会认为event是个变量或方法，而不是事件 -->
+            <button @click="btnClick7(123,event)">btnClick7</button>
+            <!-- 当既需要普通参数，又需要event,可以使用$event获取当前事件 -->
+            <button @click="btnClick8(123,$event)">btnClick8</button>
+            <!-- 当既需要普通参数，又需要event,但是只传了一个参数:同理，实参个数小于形参时,按照形参的顺序去匹配实参 -->
+            <button @click="btnClick9($event,'num')">btnClick9</button>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好',
+                    event:'1111'
+                },
+                methods:{
+                    btnClick2(){
+                        console.log("btnClick2");
+                    },
+                    btnClick1(){
+                        console.log("btnClick1");
+                    },
+                    btnClick3(abc){
+                        console.log("btnClick3"+abc);
+                    },
+                    btnClick4(abc){
+                        console.log("btnClick4"+abc);
+                    },
+                    btnClick5(abc){
+                        console.log("btnClick5",abc);
+                    },
+                    btnClick6(abc,event){
+                        // 如果abc,event都没传，会把事件传给第一个参数即abc
+                        console.log("btnClick6",abc,event);
+                    },
+                    btnClick7(abc,event){
+                        // 如果abc,event都没传，会把事件传给第一个参数即abc
+                        console.log("btnClick7",abc,event);
+                    },
+                    btnClick8(abc,event){
+                        // 如果abc,event都没传，会把事件传给第一个参数即abc
+                        console.log("btnClick8",abc,event);
+                    },
+                    btnClick9(abc,event,num){
+                        // 如果abc,event都没传，会把事件传给第一个参数即abc
+                        console.log("btnClick9",abc,event,num);
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
