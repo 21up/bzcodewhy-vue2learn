@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <label>{{labelName}}</label>
+            <input :value="inputTips"/>
+            <button @click="changeType">切换类型</button>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    labelName: '用户账号',
+                    inputTips:'用户账号',
+                    isInUserNo:true
+                },
+                methods:{
+                    changeType(){
+                        this.isInUserNo=!this.isInUserNo
+                        if(this.isInUserNo){
+                            this.labelName='用户账号'
+                            this.inputTips='用户账号'
+                        }else{
+                            this.labelName='邮箱账号'
+                            this.inputTips='邮箱账号'
+                        }
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
