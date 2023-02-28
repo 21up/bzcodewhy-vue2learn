@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            {{message}}
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好'
+                }
+            })
+            //注意1:一旦被赋值，不能修改
+            const name='why'
+            //name='wh1'是不允许的
+            //注意2:一旦定义，必须初始化
+            const name1='why1'
+            //const name1是不允许的
+            //注意3：常亮的含义是指向的对象不能修改,但是可以改变对象内部的属性
+            const obj={
+                name:'11',
+                age:'222'
+            }
+            //obj={}是不允许的,
+            //但是obj.name='122',obj.age='33'是可以的
+        </script>
+</body>
+</html>

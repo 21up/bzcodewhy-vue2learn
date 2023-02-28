@@ -18,11 +18,12 @@
     </div>
     <script src="../js/vue.js"></script>
     <script>
+        const obj={
+            cnt:0
+        }
         const app=new Vue({
             el:'#app',
-            data:{
-                cnt:0
-            },
+            data:obj,
             methods:{
                 add:function(){
                     //this表示new Vue这个对象，而不是data.cnt,这其中做了代理
